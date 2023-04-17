@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@500&display=swap");
+
+body {
+  background-image: url(../src/img/fondo.png);
+  background-color: #8ec5fc;
+  background-color: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex-grow: 1;
+}
+.gifIzquierda {
+  transform: scaleX(-1);
+}
+.titulo {
+    font-family: 'DynaPuff', cursive;
+    -webkit-text-stroke: 1px black ;
+    background-color: #5b93cc;
+}
+#btnComenzar{
+    background-color: #046d74;
+    color: white;
+}
+#btnComenzar:hover{
+    background-color: #046167;
+}
+#btnComenzar:active{
+    background-color: #03474c;
+    border: #03474c;
+}
