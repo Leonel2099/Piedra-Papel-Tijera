@@ -1,55 +1,78 @@
-const generarDNI = () => Math.floor(Math.random() * (99999999 - 00000000 + 1) + 00000000);
-
-class Persona{
-
-  constructor(nombre,edad,dni,sexo,peso,altura,anioNacimiento){
-    this.nombre=nombre;
-    this.edad=edad;
-    this.dni=dni;
-    this.sexo=sexo;
-    this.peso=peso;
-    this.altura=altura; 
-    this.anioNacimiento=anioNacimiento; 
+let jugar = document.getElementById("btnComenzar");
+function comenzar() {
+  let opciones = document.getElementById("btnOpciones");
+  opciones.className = "";
+  let piedra = document.getElementById("opcionPiedra"),
+    papel = document.getElementById("opcionPapel"),
+    tijera = document.getElementById("opcionTijera"),
+    opcionJugador = document.getElementById("imgOpcionJugador"),
+    opcionPc = document.getElementById("imgOpcionPc");
+  let opcionPcRandom = parseInt(Math.floor(Math.random() * (3 - 1 + 1) + 1));
+  piedra.addEventListener("click", () => {
+    cambiarImgPc(opcionPcRandom, opcionPc);
+    opcionJugador.src = "./src/img/piedra.png";
+    resultado(parseInt(piedra.value), opcionPcRandom);
+  });
+  papel.addEventListener("click", () => {
+    cambiarImgPc(opcionPcRandom, opcionPc);
+    opcionJugador.src = "./src/img/papel.png";
+    resultado(parseInt(papel.value), opcionPcRandom);
+  });
+  tijera.addEventListener("click", () => {
+    cambiarImgPc(opcionPcRandom, opcionPc);
+    opcionJugador.src = "./src/img/tijera.png";
+    resultado(parseInt(tijera.value), opcionPcRandom);
+  });
+  jugar.innerHTML = "Jugar De nuevo";
+  jugar.addEventListener("click", jugarDeNuevo);
+}
+const cambiarImgPc = (opcion, objetoOpcionPc) => {
+  if (opcion === 1) {
+    return (objetoOpcionPc.src = "./src/img/piedra.png");
+  } else if (opcion === 2) {
+    return (objetoOpcionPc.src = "./src/img/papel.png");
+  } else if (opcion === 3) {
+    return (objetoOpcionPc.src = "./src/img/tijera.png");
   }
+};
 
-  mostrarGeneracion(){
-    if(this.anioNacimiento >= 1994 && this.anioNacimiento <= 2010){
-      document.write(`Pertenece a la generazion Z <br>`);
-      document.write(`Su rasgo caracteristico es : Irreverencia <br>`);
-    }else if(this.anioNacimiento >= 1981 && this.anioNacimiento <= 1993){
-      document.write(`Pertenece a la generazion Y millennials <br>`);
-      document.write(`Su rasgo caracteristico es : Frustacion <br>`);
-    }else if(this.anioNacimiento >= 1969 && this.anioNacimiento <= 1980){
-      document.write(`Pertenece a la generazion X <br>`);
-      document.write(`Su rasgo caracteristico es : Obsesion por el exito <br>`);
-    }else if(this.anioNacimiento >= 1949 && this.anioNacimiento <= 1968){
-      document.write(`Pertenece a la generazion Baby Boom <br>`);
-      document.write(`Su rasgo caracteristico es : Ambicion <br>`);
-    }else if(this.anioNacimiento >= 1930 && this.anioNacimiento <= 1948){
-      document.write(`Pertenece a la generazion Silient Generation los ninios de la posguerra <br>`);
-      document.write(`Su rasgo caracteristico es : Austeridad <br>`);
-    }else{
-      alert(`Fuera del rango del marco temporal`);
+const resultado = (opcion1, opcion2) => {
+  let alert = document.getElementById("alertResultado");
+  if (opcion1 === 1) {
+    if (opcion2 === 2) {
+      alert.className = "alert alert-danger";
+      alert.innerHTML = "PERDISTE";
+    } else if (opcion2 === 3) {
+      alert.className = "alert alert-success";
+      alert.innerHTML = "GANASTE";
+    } else {
+      alert.className = "alert alert-warning";
+      alert.innerHTML = "EMPATE";
+    }
+  } else if (opcion1 === 2) {
+    if (opcion2 === 1) {
+      alert.className = "alert alert-success";
+      alert.innerHTML = "GANASTE";
+    } else if (opcion2 === 3) {
+      alert.className = "alert alert-danger";
+      alert.innerHTML = "PERDISTE";
+    } else {
+      alert.className = "alert alert-warning";
+      alert.innerHTML = "EMPATE";
+    }
+  } else if (opcion1 === 3) {
+    if (opcion2 === 1) {
+      alert.className = "alert alert-danger";
+      alert.innerHTML = "PERDISTE";
+    } else if (opcion2 === 2) {
+      alert.className = "alert alert-success";
+      alert.innerHTML = "GANASTE";
+    } else {
+      alert.className = "alert alert-warning";
+      alert.innerHTML = "EMPATE";
     }
   }
-  
-  esMayorDeEdad(){
-    if(this.edad >= 18){
-      document.write(`Es mayor de edad`);
-    }else{
-      document.write(`No es mayor de edad`);
-    }
-  }
-
-  imprimeDatos(){
-    document.write('<h2>Datos</h2>')
-    document.write(`Nombre: ${this.nombre},<br> `);
-    document.write(`Edad: ${this.edad} años,<br> `);
-    document.write(`Dni: ${this.dni}<br>`);
-    document.write(`Sexo: ${this.sexo}<br>`);
-    document.write(`Peso: ${this.peso}<br>`);
-    document.write(`Altura: ${this.altura}<br>`);
-    document.write(`Año de nacimiento: ${this.anioNacimiento} <br>`);
-  }
-
+};
+function jugarDeNuevo() {
+  location.reload();
 }

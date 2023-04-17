@@ -15,29 +15,24 @@
   <body>
     <header></header>
     <main>
-      <section>
+      <section class="d-flex flex-column align-items-center">
         <aside class="text-center">
           <h1 class="display-1  text-white titulo p-2">Piedra, papel o tijeras</h1>
         </aside>
         <aside class="d-flex">
           <div class="d-flex flex-column align-items-center">
             <div>
-              <img src="./src/img/giphy.gif" class="img-fluid" alt="animacion de piedra-papel-tijera">
+              <img src="./src/img/giphy.gif" class="img-fluid" id="imgOpcionJugador" alt="animacion de piedra-papel-tijera">
             </div>
-            <div class="d-none">
-              <button class="btn btn-success" id="opcionTijera">✌🏾</button>
-              <button class="btn btn-success" id="opcionPiedra">✊🏾</button>
-              <button class="btn btn-success" id="opcionPapel">✋🏾</button>
+            <div class="d-none" id="btnOpciones">
+              <button class="btn btn-success" id="opcionPiedra" value="1">✊🏾</button>
+              <button class="btn btn-success" id="opcionPapel" value="2">✋🏾</button>
+              <button class="btn btn-success" id="opcionTijera" value="3">✌🏾</button>
             </div>
           </div>
           <div class="d-flex flex-column align-items-center">
             <div class="d-flex flex-column">
-              <img src="./src/img/giphy.gif" class="img-fluid gifIzquierda" alt="animacion de piedra-papel-tijera">
-            </div>
-            <div class="d-none">
-              <button class="btn btn-success" id="opcionnTijera">✌🏾</button>
-              <button class="btn btn-success" id="opcionPiedra">✊🏾</button>
-              <button class="btn btn-success" id="opcionPapel">✋🏾</button>
+              <img src="./src/img/giphy.gif" class="img-fluid gifIzquierda" id="imgOpcionPc" alt="animacion de piedra-papel-tijera">
             </div>
           </div>
         </aside>
@@ -46,12 +41,8 @@
             <button type="button" class="btn" onclick="comenzar()" id="btnComenzar">Jugar</button>
           </div>
         </aside>
-      </section>
-      <section class="container d-none">
-        <div class="alert alert-success" role="alert">
-          Ganaste
-        </div>
-      </section>
+        <section class="d-none" role="alert" id="alertResultado">
+        </section>
     </main>
     <footer></footer>
     <script src="js/bootstrap.min.js"></script>
